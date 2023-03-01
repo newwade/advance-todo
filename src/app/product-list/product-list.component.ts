@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../post';
+import { PostService } from '../post.service';
 
 import { products } from '../products';
 
@@ -9,6 +11,14 @@ import { products } from '../products';
 })
 export class ProductListComponent {
   products = products;
+  posts: Post[] = [];
+  constructor(private postService: PostService) {}
+
+  ngOnInit() {
+    this.postService.getAll().subscribe((data) => {
+      this.posts = data;
+    });
+  }
 
   share() {
     window.alert('The product has been shared!');
