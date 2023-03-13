@@ -1,0 +1,14 @@
+<div>
+  <h1>Good Afternoon</h1>
+  <h2>What's you plan for today</h2>
+</div>
+<form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
+  <input id="task" type="text" placeholder="Add Task" formControlName="task" />
+  <button type="submit">Add</button>
+</form>
+<div *ngFor="let todo of todos">
+  <div class="list">
+    <input type="checkbox" />
+    <p>{{ todo.task }}</p>
+  </div>
+</div>
